@@ -21,13 +21,13 @@ public class PautaService {
 	@Transactional(value = TxType.REQUIRED)
 	public PautaDto salvar(PautaDto pautaDto) {
 		Pauta pauta = pautaRepository.save(Pauta.builder().nomePauta(pautaDto.getNomePauta()).status(true).build());
-		pautaDto.setId(pauta.getId());
+		pautaDto.setCodigoPauta(pauta.getId());
 		return pautaDto;
 	}
 
 	public PautaDto buscarPorId(Long id) {
 		return pautaRepository.findById(id)
-				.map(p -> PautaDto.builder().id(p.getId()).nomePauta(p.getNomePauta()).build())
+				.map(p -> PautaDto.builder().codigoPauta(p.getId()).nomePauta(p.getNomePauta()).build())
 				.orElseThrow(NotFoundException::new);
 	}
 }

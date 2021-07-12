@@ -51,7 +51,7 @@ public class PautaRest {
 	}
 	
 	private void adicionarLinks(PautaDto pautaDto) {
-		pautaDto.add(linkTo(this.getClass()).slash(pautaDto.getId()).withSelfRel());
-		pautaDto.add(linkTo(methodOn(this.getClass()).getSessoesPauta(pautaDto.getId())).withRel("sessoes"));
+		pautaDto.add(linkTo(this.getClass()).slash(pautaDto.getCodigoPauta()).withSelfRel());
+		pautaDto.add(linkTo(methodOn(this.getClass()).getSessoesPauta(pautaDto.getCodigoPauta())).withRel("sessoes"));
 	}
 }

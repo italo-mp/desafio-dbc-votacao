@@ -32,7 +32,7 @@ class PautaRestTest {
 	
 	@Test
 	void deve_criar_nova_pauta() throws Exception {
-	    PautaDto pautaDto = PautaDto.builder().nomePauta("Pauta teste").id(1L).build();
+	    PautaDto pautaDto = PautaDto.builder().nomePauta("Pauta teste").codigoPauta(1L).build();
 	    when(service.salvar(pautaDto)).thenReturn(pautaDto);
 	    mock.perform(post("/v1/pautas").content(new ObjectMapper().writeValueAsString(pautaDto))
 	      .contentType(MediaType.APPLICATION_JSON))
@@ -41,9 +41,9 @@ class PautaRestTest {
 	
 	@Test
 	void deve_retornar_pauta_por_id() throws Exception {
-	    PautaDto pautaDto = PautaDto.builder().nomePauta("Pauta teste").id(1L).build();
-	    when(service.buscarPorId(pautaDto.getId())).thenReturn(pautaDto);
-	    mock.perform(get("/v1/pautas/{id}", pautaDto.getId())
+	    PautaDto pautaDto = PautaDto.builder().nomePauta("Pauta teste").codigoPauta(1L).build();
+	    when(service.buscarPorId(pautaDto.getCodigoPauta())).thenReturn(pautaDto);
+	    mock.perform(get("/v1/pautas/{id}", pautaDto.getCodigoPauta())
 	      .contentType(MediaType.APPLICATION_JSON))
 	      .andExpect(status().isOk())
 	      .andExpect(jsonPath("$.nomePauta").value("Pauta teste"));

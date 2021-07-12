@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -28,8 +27,8 @@ import lombok.Setter;
 @JsonIgnoreProperties(value = {"links"}, allowGetters = true)
 public class SessaoDto extends RepresentationModel<SessaoDto>{
 	
-	@JsonIgnore
-	private Long id;
+	@ApiModelProperty(hidden=true)
+	private Long codigoSessao;
 	
 	@ApiModelProperty(value="Data ativação da pauta")
 	@Builder.Default

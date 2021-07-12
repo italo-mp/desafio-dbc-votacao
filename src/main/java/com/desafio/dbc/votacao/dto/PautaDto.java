@@ -4,7 +4,6 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -22,8 +21,8 @@ import lombok.Setter;
 @JsonIgnoreProperties(value = {"links"}, allowGetters = true)
 public class PautaDto extends RepresentationModel<PautaDto> {
 	
-	@JsonIgnore
-	private Long id;
+	@ApiModelProperty(hidden=true)
+	private Long codigoPauta;
 	
 	@ApiModelProperty(value="Nome da Pauta", required = true)
 	@NotBlank(message = "Nome da pauta obrigatório")

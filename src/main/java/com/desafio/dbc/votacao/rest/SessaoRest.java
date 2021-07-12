@@ -48,7 +48,7 @@ public class SessaoRest {
 	}
 
 	private void adicionarLinks(SessaoDto sessaoDto) {
-		sessaoDto.add(linkTo(this.getClass()).slash(sessaoDto.getId()).withSelfRel());
+		sessaoDto.add(linkTo(this.getClass()).slash(sessaoDto.getCodigoSessao()).withSelfRel());
 		sessaoDto.add(linkTo(methodOn(PautaRest.class).getPorId(sessaoDto.getCodigoPauta())).withRel("pauta"));
 	}
 }

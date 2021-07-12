@@ -36,14 +36,14 @@ public class SessaoService {
 				.tempoDuracao(sessaoDto.getTempoDuracao())
 				.pauta(Pauta.builder().id(sessaoDto.getCodigoPauta()).build())
 				.build());
-		sessaoDto.setId(sessao.getId());
+		sessaoDto.setCodigoSessao(sessao.getId());
 		sessaoCache.adicionarSessaoCache(sessao);
 		return sessaoDto;
 	}
 
 	public SessaoDto buscarPorId(Long id) {
 		return sessaoRepository.findById(id)
-				.map(s -> SessaoDto.builder().id(s.getId()).dataAtivacao(s.getDataAtivacao())
+				.map(s -> SessaoDto.builder().codigoSessao(s.getId()).dataAtivacao(s.getDataAtivacao())
 						.dataDesativacao(s.getDataDesativacao()).nomePauta(s.getPauta().getNomePauta())
 						.codigoPauta(s.getPauta()
 						.getId()).build())
