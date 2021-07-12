@@ -1,9 +1,6 @@
 package com.desafio.dbc.votacao.rest;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafio.dbc.votacao.dto.PautaDto;
-import com.desafio.dbc.votacao.dto.SessaoDto;
 import com.desafio.dbc.votacao.service.PautaService;
 
 import io.swagger.annotations.ApiOperation;
@@ -44,14 +40,7 @@ public class PautaRest {
 		return ResponseEntity.status(HttpStatus.OK).body(pautaDto);
 	}
 	
-	@ApiOperation(value = "Buscar sessões da pauta")
-	@GetMapping("/v1/pautas/{id}/sessoes")
-	public ResponseEntity<List<SessaoDto>> getSessoesPauta(@PathVariable(name = "id") Long id){
-		return ResponseEntity.ok().build();
-	}
-	
 	private void adicionarLinks(PautaDto pautaDto) {
 		pautaDto.add(linkTo(this.getClass()).slash(pautaDto.getCodigoPauta()).withSelfRel());
-		pautaDto.add(linkTo(methodOn(this.getClass()).getSessoesPauta(pautaDto.getCodigoPauta())).withRel("sessoes"));
 	}
 }
