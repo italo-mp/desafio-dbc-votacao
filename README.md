@@ -2,7 +2,7 @@
 ## Sistema de votação baseado em Pauta e Sessão.
 
 
-##RabbitMQ
+<h3>RabbitMQ</h3>
 Windows
 Download and install ERlang http://erlang.org/download/otp_win64_22.3.exe
 Downlaod and install RabbitMQ https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.8/rabbitmq-server-3.8.8.exe
