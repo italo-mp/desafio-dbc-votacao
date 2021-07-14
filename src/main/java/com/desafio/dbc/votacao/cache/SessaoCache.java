@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Component
-@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+@Scope
 public class SessaoCache {
 	
 	@Autowired

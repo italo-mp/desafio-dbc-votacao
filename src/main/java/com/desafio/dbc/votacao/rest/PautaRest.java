@@ -1,6 +1,7 @@
 package com.desafio.dbc.votacao.rest;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import javax.validation.Valid;
 
@@ -41,6 +42,6 @@ public class PautaRest {
 	}
 	
 	private void adicionarLinks(PautaDto pautaDto) {
-		pautaDto.add(linkTo(this.getClass()).slash(pautaDto.getCodigoPauta()).withSelfRel());
+		pautaDto.add(linkTo(methodOn(PautaRest.class).getPorId(pautaDto.getCodigoPauta())).withSelfRel());
 	}
 }
